@@ -1,5 +1,4 @@
-var mongoClient = require('mondodb').MongoClient;
-
+var mongoClient = require('mongodb').MongoClient();
 var url = "mongodb://localhost:27017/myDb";
 
 mongoClient.connect(url, function (err, db) {
@@ -7,7 +6,7 @@ mongoClient.connect(url, function (err, db) {
         throw err;
     }
 
-    var doc = {name: "company", address: "highway"};
+    var doc = {name: "name", address: "address"};
 
     db.collection("customers").insertOne(doc, function (err, res) {
         if(err) {
