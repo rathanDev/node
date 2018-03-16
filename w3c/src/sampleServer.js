@@ -3,7 +3,7 @@ let clock = require('./myFirstModule');
 let fs = require('fs');
 let url = require('url');
 let uc = require('upper-case');
-
+let formidable = require('formidable');
 
 console.log("NodeJs server listening...");
 
@@ -71,4 +71,33 @@ http.createServer(function (req, res) {
         console.log("The file is open ", data);
     })
 
+});
+
+
+http.createServer(function (req, res) {
+
+    if (req.url === '/fileupload') {
+        let form = new formidable.IncomingForm();
+        form.parse(req, function (err, fields, files) {
+
+            console.log(fields);
+            console.log(files);
+
+            res.write("File uploaded");
+            res.end();
+        });
+        return;
+    }
+
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(`
+        <form action="fileupload" method="post" enctype="multipart/form-data">
+        <input type="file" name="filetoupload"> <br>
+        <input type="submit">
+        </form>
+    `);
+    res.end();
+
 }).listen(8888);
+
+
