@@ -5,13 +5,15 @@ let url = require('url');
 let uc = require('upper-case');
 
 
+console.log("NodeJs server listening...");
+
+
 http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write('The date and time : ' + clock.myDateTime());
     res.write("\n url:" + req.url);
     res.end();
 });
-    // .listen(8877);
 
 
 http.createServer(function (req, res) {
@@ -26,7 +28,6 @@ http.createServer(function (req, res) {
     });
 
 });
-    // .listen(8878);
 
 
 http.createServer(function (req, res) {
@@ -52,11 +53,22 @@ http.createServer(function (req, res) {
     })
 
 });
-    // .listen(8878);
 
 
 http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write(uc('hello world'));
     res.end();
+});
+
+
+http.createServer(function (req, res) {
+
+    let file = '../other/profile.txt';
+    let readStream = fs.createReadStream(file);
+
+    readStream.on('open', function (data) {
+        console.log("The file is open ", data);
+    })
+
 }).listen(8888);
