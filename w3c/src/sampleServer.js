@@ -2,13 +2,17 @@ let http = require('http');
 let clock = require('./myFirstModule');
 let fs = require('fs');
 let url = require('url');
+let uc = require('upper-case');
+
 
 http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write('The date and time : ' + clock.myDateTime());
     res.write("\n url:" + req.url);
     res.end();
-}).listen(8877);
+});
+    // .listen(8877);
+
 
 http.createServer(function (req, res) {
 
@@ -21,7 +25,8 @@ http.createServer(function (req, res) {
         res.end();
     });
 
-}).listen(8878);
+});
+    // .listen(8878);
 
 
 http.createServer(function (req, res) {
@@ -46,4 +51,12 @@ http.createServer(function (req, res) {
         res.end();
     })
 
+});
+    // .listen(8878);
+
+
+http.createServer(function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(uc('hello world'));
+    res.end();
 }).listen(8888);
