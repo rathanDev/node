@@ -77,15 +77,34 @@ http.createServer(function (req, res) {
 http.createServer(function (req, res) {
 
     if (req.url === '/fileupload') {
+
         let form = new formidable.IncomingForm();
+
         form.parse(req, function (err, fields, files) {
+
+            if(err) {
+                console.log(err);
+                console.log("Redirecting to 8888");
+                res.writeHead(301, {Location: 'localhost:8888'});
+                res.end();
+                return;
+            }
 
             console.log(fields);
             console.log(files);
 
-            res.write("File uploaded");
-            res.end();
+            let tempPath =  files.filetoupload.path;
+            let newPath = "/home/janarthan/practice/node/w3c/other/" + files.filetoupload.name;
+            console.log(newPath);
+
+            fs.rename(tempPath, newPath, function (err) {
+                if(err) throw err;
+                res.write("File uploaded and moved");
+                res.end();
+            });
+
         });
+
         return;
     }
 
