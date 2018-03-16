@@ -4,6 +4,7 @@ let fs = require('fs');
 let url = require('url');
 let uc = require('upper-case');
 let formidable = require('formidable');
+let nodemailer = require('nodemailer');
 
 console.log("NodeJs server listening...");
 
@@ -117,6 +118,36 @@ http.createServer(function (req, res) {
     `);
     res.end();
 
+});
+
+
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: '#',
+        pass: '#'
+    }
+});
+
+let mailOptions = {
+    from: '#',
+    to: 'rathan.kparam@gmail.com',
+    subject: 'Sending email using nodeJs',
+    text: "That's cool"
+};
+
+http.createServer(function (req, res) {
+    // if(req.url !== "sendEmail") {
+    //     console.log(req.url);
+    //     return;
+    // }
+    console.log("Send email");
+
+    transporter.sendMail(mailOptions, function (err, info) {
+        console.log("Email sent");
+        console.log(info);
+    })
 }).listen(8888);
+
 
 
