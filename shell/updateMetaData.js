@@ -29,17 +29,17 @@ async function ls() {
             break;
         }
 
-        const {stdout: stdOut, stdErr} = await exec(
+        const {stdout, stderr} = await exec(
             `aws s3api list-objects-v2 --bucket dev.trivyol.com --max-item ${maxItem} --starting-token ${nextToken} --profile triv-s3`,
             {maxBuffer: 200 * 1024 * 1024}
         );
 
-        if (stdErr) {
-            console.log('Err', stdErr);
+        if (stderr) {
+            console.log('Err', stderr);
             return;
         }
 
-        const res = JSON.parse(stdOut);
+        const res = JSON.parse(stdout);
 
         nextToken = res.NextToken;
         console.log('nextToken', nextToken);
