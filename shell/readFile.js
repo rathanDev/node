@@ -12,6 +12,13 @@ function readData() {
         }
 
         console.log('data', data);
+
+        const keys = data.split('\n');
+
+        keys.forEach(async function (key) {
+            console.log('key -', key);
+        });
+
     });
 
 }
