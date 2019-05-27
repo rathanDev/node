@@ -3,6 +3,8 @@ npm init
 
 npm i aws-sdk --save
 npm i util --save
+// npm i express --save
+npm i request --save
 
 cd other/
 zip -r index.zip ../
