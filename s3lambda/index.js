@@ -8,7 +8,7 @@ const request = require('request');
 // const express = require('express');
 // const api = express();
 
-console.log('InitS3-LambdaService');
+console.log('InitS3TriggerLambdaService');
 
 exports.handler = function (event, context, callback) {
 
@@ -22,16 +22,21 @@ exports.handler = function (event, context, callback) {
     const srcKey = decodeURIComponent(record.s3.object.key.replace(/\+/g, " "));
     console.log('SrcKey:', srcKey);
 
-    const url = 'https://a/url';
-    const formData = {};
+    const url = 'https://reqres.in/api/users';
+    const postData = {
+        "name": srcKey,
+        "job": srcBucket
+    };
 
-    request.post({url: url, formData: formData}, function optionalCallback(err, httpResponse, body) {
+    request.post({url: url, formData: postData}, function optionalCallback(err, httpResponse, body) {
 
         if (err) {
             return console.error('Err ', err);
         }
 
-        console.log('Success', body);
+        console.log('Successful');
+        console.log('HttpResponse', httpResponse);
+        console.log('body', body);
 
     });
 
