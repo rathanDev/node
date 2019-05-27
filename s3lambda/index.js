@@ -34,9 +34,7 @@ exports.handler = function (event, context, callback) {
             return console.error('Err ', err);
         }
 
-        console.log('Successful');
-        console.log('HttpResponse', httpResponse);
-        console.log('body', body);
+        console.log('Successful body', body);
 
     });
 
