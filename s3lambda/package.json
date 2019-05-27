@@ -1,0 +1,14 @@
+{
+  "name": "lam",
+  "version": "1.0.0",
+  "description": "Trigger when a file is uploaded to s3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jana",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.463.0"
+  }
+}
