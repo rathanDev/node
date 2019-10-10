@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Firebase</title>
+
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script>
+
+</head>
+<body>
+
+<button id="buttonId" onclick="initFirebase()">Init Firebase</button>
+
+<script>
+
+
+    function initFirebase() {
+
+        firebase.initializeApp({
+            apiKey: 'AIzaSyA7SE96UA4z4e8NJUaQANvDO-GA7qXkWyY',
+            authDomain: 'oct10project.firebaseapp.com',
+            databaseURL: 'https://oct10project.firebaseio.com',
+            projectId: 'oct10project',
+            storageBucket: 'oct10project.appspot.com',
+            messagingSenderId: '96545103937',
+            appId: '1:96545103937:web:75d77eede47192edc6e6c0',
+            measurementId: 'G-F7TXJJ8KV2'
+        });
+        console.log('initialized firebase');
+
+        console.dir(firebase);
+
+        const store = firebase.firestore();
+
+        store
+            .collection('users')
+            .add({
+                first: 'Jana',
+                last: 'Rathan',
+                born: 1991
+            })
+            .then(function (docRef) {
+                console.log('Doc written with id: ', docRef.id);
+                console.log('Doc: ', docRef);
+            })
+            .catch(function (err) {
+                console.error('Err inserting doc ', err);
+            });
+
+        store
+            .collection("users")
+            .get()
+            .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    console.log(`${doc.id} => ${doc.data()}`);
+                });
+            })
+            .catch(function (err) {
+                console.error('Err reading ', err);
+            });
+
+    }
+</script>
+
+</body>
+</html>
