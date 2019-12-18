@@ -15,18 +15,6 @@ exports.list = (req, res) => {
 
 
 
-    // console.log('List all products');
-
-    // Product.find({}, function (err, products) {
-    //     if(err) {
-    //         console.error('Error finding products', err);
-    //         return;
-    //     }
-    //     console.log('Products', products);
-    // })
-
-
-
     console.log('Find one product');
 
     Product.findOne({}, function (err, product) {
@@ -47,7 +35,7 @@ exports.product_create = function(req, res) {
 
 exports.create = (req, res) => {
 
-    console.log('Create product here', req.body);
+    console.log('Create product hereee', req.body);
 
     let product = new Product({
         name: req.body.name,
