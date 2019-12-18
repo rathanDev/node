@@ -6,4 +6,8 @@ exports.routesConfig = (app) => {
         ProductController.list
     ]);
 
+    app.get('/product/create', [
+        ProductController.create
+    ]);
+
 };

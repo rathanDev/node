@@ -2,6 +2,7 @@ const MongoClient = require('mongodb').MongoClient;
 // const dbConnectionUrl = 'mongodb://localhost:27017/mongorediss';
 const dbConnectionUrl = 'mongodb://localhost:27017/';
 
+/*
 MongoClient.connect(dbConnectionUrl, (err, db) => {
     if(err) {
         console.error(`Error connecting database ${dbConnectionUrl}`, err);
@@ -26,12 +27,8 @@ MongoClient.connect(dbConnectionUrl, (err, db) => {
             db.close();
         })
 
-    // cursor.each((err, doc) => {
-    //    console.log('doc', doc);
-    // });
-    //
-    // db.close();
 });
+*/
 
 exports.list = (req, res) => {
     const result = {'name': 'aname', 'role': 'arole'};

@@ -11,6 +11,10 @@ npm i -g nodemon
 
 npm install mongodb
 
+npm install --save mongoose
+npm install --save body-parser
+
+
 ### ---------- ---------- ###
 Start MongoDb
 
