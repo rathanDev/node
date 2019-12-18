@@ -13,7 +13,7 @@ npm install mongodb
 
 npm install --save mongoose
 npm install --save body-parser
-
+npm i --save joi
 
 ### ---------- ---------- ###
 Start MongoDb

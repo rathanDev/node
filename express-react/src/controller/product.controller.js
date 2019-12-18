@@ -1,4 +1,6 @@
 const Product = require('../model/product.model');
+const Joi = require('joi');
+const Validators = require('../config/validation.config');
 
 
 exports.list = (req, res) => {
@@ -44,7 +46,11 @@ exports.findById = (req, res) => {
 
 exports.create = (req, res) => {
 
-    console.log('Create product hereee', req.body);
+    const {error, value} = Joi.validate(req.body, Validators.productDef);
+    if (error) {
+        console.error('Err', error);
+        return res.status(400).send(error.details[0].message);
+    }
 
     let product = new Product({
         name: req.body.name,
