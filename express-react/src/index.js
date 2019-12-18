@@ -2,13 +2,10 @@ const express = require('express');
 const app = express();
 
 const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 
-const UserRoute = require('./route/user.route');
-UserRoute.routesConfig(app);
-
-const ProductRoute = require('./route/product.route');
-ProductRoute.routesConfig(app);
 
 
 // Set up mongoose connection
@@ -20,8 +17,15 @@ mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+
+
+
+const UserRoute = require('./route/user.route');
+UserRoute.routesConfig(app);
+
+const ProductRoute = require('./route/product.route');
+ProductRoute.routesConfig(app);
+
 
 
 
@@ -43,7 +47,6 @@ app.get('/:param1', (req, res) => {
     res.send('Get with path param');
 });
 
-
 app.post('/a-post', (req, res) => {
     console.log('body', req.body);
     res.send('Post with body');
@@ -52,3 +55,13 @@ app.post('/a-post', (req, res) => {
 
 
 
+// app.post('/product/create', (req, res) => {
+//     console.log('body', req.body);
+//     res.send('/product/create');
+// });
+
+// const ProductController = require('./controller/product.controller');
+//
+// app.post('/product/create', [
+//     ProductController.create
+// ]);

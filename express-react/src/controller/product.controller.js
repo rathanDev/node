@@ -40,9 +40,14 @@ exports.list = (req, res) => {
 
 };
 
+exports.product_create = function(req, res) {
+    console.log('Create product here', req.body);
+    res.send('Product will created');
+};
+
 exports.create = (req, res) => {
 
-    console.log('Create product', req.body);
+    console.log('Create product here', req.body);
 
     let product = new Product({
         name: req.body.name,
