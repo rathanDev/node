@@ -62,3 +62,11 @@ exports.create = (req, res) => {
 };
 
 
+exports.update = (req, res) => {
+    Product.findByIdAndUpdate(req.params.id, {$set: req.body}, (err, product) => {
+        if (err) {
+            return next(err);
+        }
+        res.send(product);
+    })
+};

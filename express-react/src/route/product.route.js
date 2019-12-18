@@ -14,4 +14,8 @@ exports.routesConfig = (app) => {
         ProductController.create
     ]);
 
+    app.post('/product/update/:id', [
+        ProductController.update
+    ]);
+
 };
