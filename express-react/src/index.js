@@ -6,7 +6,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 
-const DbConfig = require('./config/db.config');
+// const DbConfig = require('./config/mongoDb.config');
+// const PostgresDbConfig = require('./config/postgresDb.config');
 
 const UserRoute = require('./route/user.route');
 UserRoute.routesConfig(app);
@@ -54,3 +55,8 @@ app.post('/a-post', (req, res) => {
 // app.post('/product/create', [
 //     ProductController.create
 // ]);
+
+
+
+
+

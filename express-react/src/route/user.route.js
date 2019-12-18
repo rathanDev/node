@@ -2,7 +2,7 @@ const UserController = require('../controller/user.controller');
 
 exports.routesConfig = (app) => {
 
-    app.get('/users', [
+    app.get('/user/all', [
         UserController.list
     ]);
 

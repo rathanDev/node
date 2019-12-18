@@ -9,11 +9,15 @@ npm i express --save
 
 npm i -g nodemon
 
-npm install mongodb
-
+# Mongo client
 npm install --save mongoose
+! npm install mongodb
+
 npm install --save body-parser
 npm i --save joi
+
+# Postgres client
+npm i pg
 
 ### ---------- ---------- ###
 Start MongoDb
