@@ -21,14 +21,23 @@ exports.findById = (req, res) => {
 
     console.log('req params', req.params);
 
-    Product.find({_id: req.params.id}, (err, product) => {
+    // Product.find({_id: req.params.id}, (err, product) => {
+    //     if (err) {
+    //         console.error('Error finding product', err);
+    //         return next(err);
+    //     }
+    //     console.log('Product', product);
+    //     res.send(product);
+    // });
+
+    Product.findById(req.params.id, (err, product) => {
         if (err) {
             console.error('Error finding product', err);
             return next(err);
         }
         console.log('Product', product);
         res.send(product);
-    });
+    })
 
 };
 
