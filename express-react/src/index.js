@@ -6,19 +6,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 
-
-
-// Set up mongoose connection
-const mongoose = require('mongoose');
-let dev_db_url = 'mongodb://someuser:abcd1234@ds123619.mlab.com:23619/productstutorial';
-const mongoDB = process.env.MONGODB_URI || dev_db_url;
-mongoose.connect(mongoDB);
-mongoose.Promise = global.Promise;
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
-
-
+const DbConfig = require('./config/db.config');
 
 const UserRoute = require('./route/user.route');
 UserRoute.routesConfig(app);
@@ -32,8 +20,9 @@ ProductRoute.routesConfig(app);
 const port = process.env.port || 3000;
 
 app.listen(port, () => {
-    console.log(`Web service listening on port ${port}`);
+    console.log(`Web service is listening on port ${port}`);
 });
+
 
 
 

@@ -2,8 +2,12 @@ const ProductController = require('../controller/product.controller');
 
 exports.routesConfig = (app) => {
 
-    app.get('/products', [
+    app.get('/product/all', [
         ProductController.list
+    ]);
+
+    app.get('/product/:id', [
+        ProductController.findById
     ]);
 
     app.post('/product/create', [

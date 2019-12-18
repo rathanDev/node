@@ -3,35 +3,35 @@ const Product = require('../model/product.model');
 
 exports.list = (req, res) => {
 
-    // const product = {
-    //     'id': 'productId',
-    //     'name': 'productName',
-    //     'description': 'productDescription'
-    // };
-    //
-    // res
-    //     .status(200)
-    //     .send(product);
+    console.log('Find all products');
 
-
-
-    console.log('Find one product');
-
-    Product.findOne({}, function (err, product) {
-        if(err) {
-            console.error('Error finding product', err);
+    Product.find({}, function (err, products) {
+        if (err) {
+            console.error('Error finding products', err);
             return;
         }
-        console.log('Product', product);
-        res.send(product);
+        console.log('Products', products);
+        res.send(products);
     })
 
 };
 
-exports.product_create = function(req, res) {
-    console.log('Create product here', req.body);
-    res.send('Product will created');
+
+exports.findById = (req, res) => {
+
+    console.log('req params', req.params);
+
+    Product.find({_id: req.params.id}, (err, product) => {
+        if (err) {
+            console.error('Error finding product', err);
+            return next(err);
+        }
+        console.log('Product', product);
+        res.send(product);
+    });
+
 };
+
 
 exports.create = (req, res) => {
 
@@ -43,7 +43,7 @@ exports.create = (req, res) => {
     });
 
     product.save(function (err) {
-        if(err) {
+        if (err) {
             console.error('Err', err);
             return next(err);
         }
