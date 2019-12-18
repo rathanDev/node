@@ -34,5 +34,21 @@ app.listen(port, () => {
 
 
 app.get('/', (req, res) => {
-    res.send('Wait... I am working on it!!!');
+    console.log('params', req.params);
+    res.send('Just get');
 });
+
+app.get('/:param1', (req, res) => {
+    console.log('params', req.params);
+    res.send('Get with path param');
+});
+
+
+app.post('/a-post', (req, res) => {
+    console.log('body', req.body);
+    res.send('Post with body');
+});
+
+
+
+

@@ -6,7 +6,7 @@ exports.routesConfig = (app) => {
         ProductController.list
     ]);
 
-    app.get('/product/create', [
+    app.post('/product/create', [
         ProductController.create
     ]);
 

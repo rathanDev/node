@@ -42,11 +42,11 @@ exports.list = (req, res) => {
 
 exports.create = (req, res) => {
 
-    console.log('Create product');
+    console.log('Create product', req.body);
 
     let product = new Product({
-        name: 'productName',
-        price: 11.00
+        name: req.body.name,
+        price: req.body.price
     });
 
     product.save(function (err) {
