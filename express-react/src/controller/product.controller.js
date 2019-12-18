@@ -51,7 +51,7 @@ exports.create = (req, res) => {
         price: req.body.price
     });
 
-    product.save(function (err) {
+    product.save((err) => {
         if (err) {
             console.error('Err', err);
             return next(err);
