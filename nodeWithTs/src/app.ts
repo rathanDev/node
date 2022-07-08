@@ -59,13 +59,17 @@ app.all("/api/all", (req: Request, res: Response) => {
   return res.sendStatus(300);
 });
 
-async function throwsErr() {
+const throwsErr = async () => {
   throw new Error("Boom!!"); // 500 Internal Server Err
-}
+};
 
 app.get("/error", async (req, res) => {
-  await throwsErr();
-  res.send("Ok");
+  try {
+    await throwsErr();
+    res.status(200).send("All good");
+  } catch (e) {
+    res.status(400).send("Something bad happened!");
+  }
 });
 
 app.listen(3000, () => {
