@@ -28,8 +28,10 @@ app
     return res.send("An X req");
   });
 
-app.get("/api/books/:bookId", (req: Request, res: Response) => {
+app.get("/api/books/:bookId/:authorId", (req: Request, res: Response) => {
   console.log(req.params);
+  console.log(req.params.bookId);
+  console.log(req.params.authorId);
   return res.send(req.params);
 });
 
