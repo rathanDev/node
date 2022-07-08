@@ -4,7 +4,12 @@ const app = express();
 app.use(express.json()); // middleware
 
 app.get("/", (req: Request, res: Response) => {
-  return res.send("Hello world");
+  // return res.send("Hello world");
+//   return res.json({
+//     success: true,
+//     name: "Jana"
+//   });
+    return res.redirect("http://example.com");
 });
 
 app.post("/api/data", (req: Request, res: Response) => {
