@@ -3,6 +3,7 @@ console.log("Hellow NodeJs devs");
 import express from "express";
 
 const app = express();
+app.use(express.json());        // middleware
 
 app.get("/", (req, res) => {
   return res.send("Hello world");
