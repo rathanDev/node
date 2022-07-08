@@ -35,14 +35,20 @@ app.get("/api/books/:bookId/:authorId", (req: Request, res: Response) => {
   return res.send(req.params);
 });
 
-const handleMovieApi = (req: Request, res: Response, next: NextFunction) => {
+const handleMovieApi1 = (req: Request, res: Response, next: NextFunction) => {
+  console.log("handleMovieApi1");
+  next();
+};
+
+const handleMovieApi2 = (req: Request, res: Response, next: NextFunction) => {
+  console.log("handleMovieApi2");
   console.log(req.params);
   console.log(req.params.movieId);
   console.log(req.params.directorId);
   return res.send(req.params);
 };
 
-app.get("/api/movies/:movieId/:directorId", handleMovieApi);
+app.get("/api/movies/:movieId/:directorId", [handleMovieApi1, handleMovieApi2]);
 
 app.post("/api/data", (req: Request, res: Response) => {
   console.log(req.body);
