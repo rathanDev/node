@@ -1,5 +1,6 @@
 import express, { NextFunction, Request, Response } from "express";
 import { request } from "http";
+import routes from "./routes";
 
 const app = express();
 app.use(express.json()); // middleware
@@ -27,13 +28,6 @@ app
   .all((req: Request, res: Response) => {
     return res.send("An X req");
   });
-
-app.get("/api/books/:bookId/:authorId", (req: Request, res: Response) => {
-  console.log(req.params);
-  console.log(req.params.bookId);
-  console.log(req.params.authorId);
-  return res.send(req.params);
-});
 
 const handleMovieApi1 = (req: Request, res: Response, next: NextFunction) => {
   console.log("handleMovieApi1");
@@ -71,6 +65,8 @@ app.get("/error", async (req, res) => {
     res.status(400).send("Something bad happened!");
   }
 });
+
+routes(app);
 
 app.listen(3000, () => {
   console.log("App listening at 3000");
