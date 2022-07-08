@@ -1,4 +1,5 @@
 import express, { Request, Response } from "express";
+import { request } from "http";
 
 const app = express();
 app.use(express.json()); // middleware
@@ -26,6 +27,11 @@ app
   .all((req: Request, res: Response) => {
     return res.send("An X req");
   });
+
+app.get("/api/books/:bookId", (req: Request, res: Response) => {
+  console.log(req.params);
+  return res.send(req.params);
+});
 
 app.post("/api/data", (req: Request, res: Response) => {
   console.log(req.body);
