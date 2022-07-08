@@ -1,9 +1,13 @@
 import express, { NextFunction, Request, Response } from "express";
 import { request } from "http";
 import routes from "./routes";
+import helmet from "helmet";
 
 const app = express();
-app.use(express.json()); // middleware
+
+app.use(helmet());          // Adds extra headers to run the application safely
+app.use(express.json());    // middleware
+
 
 // app.get("/", (req: Request, res: Response) => {
 //   // return res.send("Hello world");
