@@ -59,6 +59,15 @@ app.all("/api/all", (req: Request, res: Response) => {
   return res.sendStatus(300);
 });
 
+async function throwsErr() {
+  throw new Error("Boom!!"); // 500 Internal Server Err
+}
+
+app.get("/error", async (req, res) => {
+  await throwsErr();
+  res.send("Ok");
+});
+
 app.listen(3000, () => {
   console.log("App listening at 3000");
 });

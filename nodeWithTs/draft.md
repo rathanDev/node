@@ -23,3 +23,6 @@ yarn add express
 yarn add @types/node @types/express -D
 
 
+
+currying 
+
