@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express, { NextFunction, Request, Response } from "express";
 import { request } from "http";
 
 const app = express();
@@ -34,6 +34,15 @@ app.get("/api/books/:bookId/:authorId", (req: Request, res: Response) => {
   console.log(req.params.authorId);
   return res.send(req.params);
 });
+
+const handleMovieApi = (req: Request, res: Response, next: NextFunction) => {
+  console.log(req.params);
+  console.log(req.params.movieId);
+  console.log(req.params.directorId);
+  return res.send(req.params);
+};
+
+app.get("/api/movies/:movieId/:directorId", handleMovieApi);
 
 app.post("/api/data", (req: Request, res: Response) => {
   console.log(req.body);
