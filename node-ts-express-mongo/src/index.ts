@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import cors from 'cors';
-// import mongoose from 'mongoose';
+import mongoose from 'mongoose';
 
 const app = express();
 
@@ -22,13 +22,14 @@ server.listen(8080, () => {
     console.log('Server running on 8080');
 })
 
+console.log(process.version)
 console.log("Hello typescript!");
 
 const MONGO_URL = 'mongodb+srv://root:root@mongoatlascluster0.jbymndf.mongodb.net/';
 
-// mongoose.Promise = Promise;
-// mongoose.connect(MONGO_URL);
-// mongoose.connection.on('error', (error: Error) => console.log(error));
+mongoose.Promise = Promise;
+mongoose.connect(MONGO_URL);
+mongoose.connection.on('error', (error: Error) => console.log(error));
 
 
 
