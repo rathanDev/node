@@ -1,5 +1,5 @@
 import express from "express";
-import { register } from "../controllers/authentication";
+import { login, register } from "../controllers/authentication";
 import * as simple from "../controllers/simple";
 
 // export default (router: express.Router) => {
@@ -8,4 +8,5 @@ import * as simple from "../controllers/simple";
 
 export default (router: express.Router) => {
   router.post("/auth/register", register);
+  router.post("/auth/login", login);
 };
