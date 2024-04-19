@@ -23,6 +23,12 @@ root
 url: 
 https://cloud.mongodb.com/v2/661bdebd3016b433849252ff#/overview
 
+used: rathan.kparam@gmail.com 
+mongoAtlasCluster0
+root
+root 
+mongodb+srv://root:<password>@mongoatlascluster0.hdwgyrk.mongodb.net/?retryWrites=true&w=majority&appName=mongoAtlasCluster0
+
 npm i mongoose
 npm i -D @types/mongoose
 
