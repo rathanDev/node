@@ -1,7 +1,7 @@
 class UserController {
   constructor(userService) {
     this.userService = userService;
-    this.getUser = this.getUser.bind(this); // why?
+    this.getUser = this.getUser.bind(this);
   }
 
   getUser(req, res) {
