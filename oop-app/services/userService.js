@@ -1,14 +1,11 @@
 class UserService {
-  constructor() {
-    this.users = [
-      { id: 1, name: "Alice" },
-      { id: 2, name: "Bob" },
-    ];
+  constructor(userRepo) {
+    this.userRepo = userRepo;
   }
 
   findByUserId(id) {
-    return this.users.find((u) => u.id == Number(id));
+    return this.userRepo.findById(id);
   }
 }
 
-module.exports = UserService
+module.exports = UserService;

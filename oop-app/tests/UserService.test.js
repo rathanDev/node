@@ -1,4 +1,4 @@
-const UserService = require("./../services/userService");
+const UserService = require("../services/UserService");
 
 describe("UserService", () => {
   it("should return a user by ID", () => {
